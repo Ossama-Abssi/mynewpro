@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $("#add").click(function(){
+                $("#OSS").fadeIn()
+                $("#OSS1").fadeIn("slow")
+                $("#OSS2").fadeIn(900)
+
+ 
+            })
+        }
+        );
+        $(document).ready(function() {
+            $("#abb").click(function(){
+                $("#OSS").fadeOut()
+                $("#OSS1").fadeOut("slow")
+                $("#OSS2").fadeOut(900)
+
+ 
+            })
+        }
+        );
+        $(document).ready(function(){
+            $("#ana").click(function(){
+              $("div").animate({
+                left: '2000px',
+                
+              });
+            });
+          });
+          $(document).ready(function(){
+            $("#ana").mouseleave(function(){
+              $("div").animate({
+                left: '50%',
+                
+              });
+            });
+          });
+
+    </script>
+    <ul style="list-style: none;">
+        <li id="A"><span id="OSS">OSSAMA</span></li>
+        <li id="B"><span id="OSS1">ABSI</span></li>
+        <li id="C"><span id="OSS2">DEV101</span></li>
+        
+    </ul>
+    <br><button id="add">Afficher</button>
+<button id="abb">Masquer</button>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div style="position:absolute;"><p id="ee" style="font-size: xx-large;">"Bonjour"</p>
+    </div>
+
+
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<button id="ana">Start Animation</button>
+
+</body>
+</html>

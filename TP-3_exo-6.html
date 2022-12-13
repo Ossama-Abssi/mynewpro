@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tp3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        p {
+            margin-top: 0.8rem;
+            margin-right: 1.7rem;
+        }
+        button {
+            border: 1px solid gray;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    </style>
+    <script>        
+        $(document).ready(function(){ 
+            var test = false  
+            var checkbox = $("#check");
+            var password = $("#MDP");
+            var conPass = $('#CMDP');   
+            checkbox.click(function() {
+                if(checkbox.prop("checked")) {
+                    password.attr("type", "text");
+                    conPass.attr("type", "text");
+                } else {
+                    password.attr("type", "password");
+                    conPass.attr("type", "password");         
+                } 
+            });
+            setInterval(function () {
+                var Date = $('#Date').val();
+                var Nom = $('#Nom').val(); 
+                if (Nom != "") {
+                    test = true;
+                    $('#Nom').css("border-color", "black");
+                    
+                }else {
+                    $('#Nom').css("border-color", "red");
+                }
+                var Select = $( "#myselect option:selected" ).val();
+                var Prenom = $('#Prenom').val();
+                if (Prenom != '') { 
+                    test = true;
+                    $('#Prenom').css("border-color", "black");
+                }else {
+                    $('#Prenom').css("border-color", "red");
+                }
+                var NomComplet = $('#NomComplet'); 
+                if (Date != '') {
+                    test = true
+                }
+                if (password.val() == conPass.val() && password != "" && conPass != "") {
+                    $('#MDP').css("border-color", "black");
+                    $('#CMDP').css("border-color", "black");
+                    test = true
+                }else {
+                    $('#MDP').css("border-color", "red");
+                    $('#CMDP').css("border-color", "red");
+                }
+                if (Select == 1) {
+                    NomComplet.val('M. ' + Prenom + ' ' + Nom);
+                }
+                else if (Select == 2) {
+                    NomComplet.val('Mme. ' + Prenom + ' ' + Nom);
+                }
+                else {
+                    NomComplet.val('Mlle. ' + Prenom + ' ' + Nom);
+                } 
+                $('#Submit').prop('disabled', true);   
+                if (test == false) {
+                    $('#Submit').prop('disabled', false);  
+                }
+                 
+            }, 1000);
+        }); 
+            $(document).on('change', '#slider', function() {
+                $('#slider_value').html( $(this).val() );
+            });         
+
+        // $(document).mousemove(function(){
+        // })
+    </script>
+</head>
+<body>
+    <form action="#" method="get">
+        <div class="container">
+            <h1>Formulaire d'inscription</h1>
+            <table>
+                <tr>
+                    <td>
+                        <p>Etat civil</p>
+                    </td>
+                    <td>
+                        <select id="myselect" >
+                            <option value="1">M.</option>
+                            <option value="2">Mme.</option>
+                            <option value="3">Mlle.</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Nom</p>
+                    </td>
+                    <td>
+                        <input id="Nom" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Prénom</p>
+                    </td>
+                    <td>
+                        <input type="text" id="Prenom">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Nom complet</p>
+                    </td>
+                    <td>
+                        <input id="NomComplet" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Date de naissance</p>
+                    </td>
+                    <td>
+                        <input id="Date" max="2022" min="1922" type="text" placeholder="dd/mm/yyyy">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Niveau en javascript</p>
+                    </td>
+                    <td>
+                        <input type="range" name="" id="slider">
+                    </td>
+                    <td>
+                        <span id="slider_value">50</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Couleur preferee</p>
+                    </td>
+                    <td>
+                        <input type="color" name="" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Mot de passe</p>
+                    </td>
+                    <td>
+                        <input type='password' id="MDP">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Mot de passe (confirmation)</p>
+                    </td>
+                    <td>
+                        <input type="password" id="CMDP">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Afficher mot de passe</p>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="" id="check">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Description</p>
+                    </td>
+                    <td>
+                        <textarea name="" id="" cols="28" rows="2"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </form>
+            <div>
+                <button type="reset">Reinitialiser</button>
+                <button id="Submit" type="submit">Envoyer</button>
+            </div>
+        </div>  
+</body>
+</html>
